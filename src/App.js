@@ -12,6 +12,9 @@ return(
   <Route path="/" element={<MainPage/>}/>
   <Route path="/signup" element={<Signup/>}/>
   <Route path="/login" element={<Login/>}/>
+  <Route path="/loogin" element={<Login/>}/>
+
+  
 </Routes>
 </BrowserRouter>
 </>

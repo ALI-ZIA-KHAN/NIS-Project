@@ -19,7 +19,13 @@ const MainPage = () => {
   const navigate = useNavigate();
   const [value,setValue] = useState(null);
   const [cookies,setCookies] = useState(null)
-return (
+
+const handleAccepted=()=>{
+setCookies('yes')
+
+}
+
+  return (
   <>
     <Main sx={{position:'relative'}}>
       <Header>
@@ -53,10 +59,11 @@ return (
             doloribus! orem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae
             natus eveniet ratione temporibus aperiam harum alias!
           </P>
-          <Button sx={{marginRight:'2%'}} variant="contained" color="inherit" onClick={()=> navigate('/signup')}>Signup</Button>
-          <Button variant="contained" color="inherit" onClick={()=> navigate('/login')}>Login</Button>
+          
           {/* <OrderNow href="#">Signup</OrderNow> */}
         </Text>
+        <button sx={{marginRight:'2%'}} variant="contained" color="inherit" onClick={()=>{navigate('/signup')}}>Signkup</button>
+          <Button variant="contained" color="inherit" onClick={()=> navigate('/login')}>Login</Button>
         <Slider>
           <Slides className="slides active">
             <img src={BurgerFries} alt="" />
@@ -105,7 +112,7 @@ return (
         <AlertTitle>Info</AlertTitle>
         This is an info alert — <strong>check it out!</strong>
         <br></br><br></br>
-        <Button onClick={()=>setValue('yes')} sx={{backgroundColor:'blue',width:'50%'}} variant="contained">Okay </Button>
+        <Button onClick={handleAccepted} sx={{backgroundColor:'blue',width:'50%'}} variant="contained">Okay </Button>
       </Alert>:null}
       {cookies===null? <Alert severity="error" sx={{position:'absolute',marginTop:'37%',width:'100%'}}>
         This site uses cookies. Learn more about how and why.
