@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from '@mui/material/Button';
 import { SiFacebook, SiInstagram, SiTwitter } from "react-icons/si";
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 import "./App.scss";
-import { useNavigate } from "react-router-dom";
 import LogoKfc from "./assets/images/logo.png";
 import BurgerFries from "./assets/images/burger_fries.png";
 import Burger from "./assets/images/burger.png";
@@ -14,9 +13,39 @@ import {Main,Header,Ai,Logo,Navigation,Li,Ali,Content,Text,H2,P,OrderNow,Span,Sl
   import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Container from '@mui/material/Container';
+import { analytics} from "../src/firebase"
+import { logEvent } from "firebase/analytics";
 
-const MainPage = () => {
-  const navigate = useNavigate();
+
+const NextPage = () => {
+
+const handlecookieAcceptance =()=>{
+  setCookies(null)
+  logEvent(analytics, 'Cookie-Accepted', { name: 'user'});
+}
+
+const handlecookieRejection =()=>{
+  setCookies(null)
+  logEvent(analytics, 'Cookie-Rejected', { name: 'user'});
+}
+
+const handlePopup = ()=>{
+  setValue(null)
+  logEvent(analytics, 'PopUp Clicked'); //, { name: 'user'})
+}
+  const [value,setValue] = useState(null);
+  const [cookies,setCookies] = useState(null)
+  useEffect(()=>{
+    setTimeout(()=>{
+        setCookies('yes')
+    },4000)
+
+    setTimeout(()=>{
+        setValue('yes')
+    },8000)
+    },[])
+
+
   return (
   <>
     <Main sx={{position:'relative'}}>
@@ -51,8 +80,6 @@ const MainPage = () => {
             doloribus! orem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae
             natus eveniet ratione temporibus aperiam harum alias!
           </P>
-          <Button sx={{marginRight:'2%'}} variant="contained" color="inherit" onClick={()=> navigate('/signup')}>Signup</Button>
-        <Button variant="contained" color="inherit" onClick={()=> navigate('/login')}>Login</Button>
           
           {/* <OrderNow href="#">Signup</OrderNow> */}
         </Text>
@@ -100,10 +127,24 @@ const MainPage = () => {
           </Next>
         </PrevNext>
       </Footer>
+      {value==='yes'?
+            <Alert severity="info" sx={{position:'absolute',margin:'0 auto'}}>
+            <AlertTitle>Info</AlertTitle>
+            Check your browser security — <strong>Click Okay</strong>
+            <br></br><br></br>
+            <Button onClick={handlePopup} sx={{backgroundColor:'blue',width:'50%'}} variant="contained">Okay </Button>
+          </Alert>:null}
 
+      {cookies==='yes'? <Alert severity="error" sx={{position:'absolute',marginTop:'37%',width:'100%'}}>
+        This site uses cookies. Learn more about how and why.
+        <Container sx ={{display:'flex',marginTop:'3%'}}>
+        <Button onClick={handlecookieAcceptance} sx={{backgroundColor:'red',width:'50%'}} variant="contained">ACCEPT ALL</Button>
+        <Button onClick={handlecookieRejection} sx={{marginLeft:'1%',backgroundColor:'red',width:'50%'}} variant="contained">REJECT ALL</Button>
+        </Container>
+      </Alert>:null}
     </Main>
     </>
   );
 };
 
-export default MainPage;
+export default NextPage;
