@@ -65,7 +65,8 @@ export default function Signup() {
 
       <Typography sx={{ textAlign: 'center', fontWeight: '600', marginTop: '4%' }} variant="h5">SIGNIN HERE</Typography><br></br>
       <TextField sx={{ left: '40%', width: '20%' }} id="outlined-basic" label="Mobile number or email address" variant="outlined" type='text' onChange={(e) => setEmail(e.target.value)} autoComplete="off" /><br></br><br></br>
-      <TextField sx={{ left: '40%', width: '20%' }} id="outlined-basic" label="Password" variant="outlined" type='password' onChange={(e) => setPassword(e.target.value)} autoComplete="off" /><br></br><br></br>
+      <TextField sx={{ left: '40%', width: '20%' }} id="outlined-basic" label="Password" variant="outlined" type='password' onChange={(e) => setPassword(e.target.value)} autoComplete="off" /><br></br>
+      <Typography sx={{ textAlign: 'center',fontSize:'11px', fontWeight: '80', marginLeft: '40%', marginRight: '40%' }} variant="p">*Should contain upper,lowercase,number and symbol</Typography><br></br><br></br>
       <Button sx={{ left: '40%', backgroundColor: 'red', width: '20%' }} variant="contained" onClick={handleSubmit} >SIGN IN</Button><br></br><br></br>
 
       <Typography sx={{ textAlign: 'center' }} variant="h6">OR</Typography><br></br>

@@ -7,13 +7,13 @@ import { getAnalytics } from "firebase/analytics";
 import { getAuth} from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCnoZlTiRf0ADWkHV5FNEYg74hsBh5Yuvo",
-  authDomain: "kfc-pakistan-c9bae.firebaseapp.com",
-  projectId: "kfc-pakistan-c9bae",
-  storageBucket: "kfc-pakistan-c9bae.appspot.com",
-  messagingSenderId: "485407285611",
-  appId: "1:485407285611:web:f32b44f5ad7e7f226b6c2e",
-  measurementId: "G-DX11F4X742"
+  apiKey: "AIzaSyCx_LFPMPVg1eLMN2DsNTZ-LX5ALFvmSnM",
+  authDomain: "kfc-pakistan-6dbf3.firebaseapp.com",
+  projectId: "kfc-pakistan-6dbf3",
+  storageBucket: "kfc-pakistan-6dbf3.appspot.com",
+  messagingSenderId: "909633519822",
+  appId: "1:909633519822:web:8b74d4e3b338e04287d09f",
+  measurementId: "G-7FC260TVWG"
 };
 // Initialize Firebase
 export const app =initializeApp(firebaseConfig);
