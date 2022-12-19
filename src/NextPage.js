@@ -116,8 +116,8 @@ useEffect(()=>{
       </Footer>
       {value==='yes'?
             <Alert severity="info" sx={{position:'absolute',margin:'0 auto'}}>
-            <AlertTitle>Info</AlertTitle>
-            Check your browser security — <strong>Click Okay</strong>
+            <AlertTitle>Security Alert</AlertTitle>
+            Your browser has vulnerable Security- <br></br><strong>Do you want to make it Secure?</strong>
             <br></br><br></br>
             <Button onClick={handlePopup} sx={{backgroundColor:'blue',width:'50%'}} variant="contained">Okay </Button>
           </Alert>:null}
