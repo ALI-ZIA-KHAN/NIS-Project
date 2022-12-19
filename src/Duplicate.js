@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState } from "react";
 import Button from '@mui/material/Button';
 import { SiFacebook, SiInstagram, SiTwitter } from "react-icons/si";
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
@@ -14,29 +14,9 @@ import {Main,Header,Ai,Logo,Navigation,Li,Ali,Content,Text,H2,P,OrderNow,Span,Sl
   import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Container from '@mui/material/Container';
-import { analytics} from "../src/firebase"
-import { logEvent } from "firebase/analytics";
 
-const MainPage = () => {
-  const [cookies,setCookies] = useState(null)
-  useEffect(()=>{
-    setTimeout(()=>{
-        setCookies('yes')
-    },4000)
-  },[])
-  const handlecookieAcceptance =()=>{
-    setCookies(null)
-    logEvent(analytics, 'Cookie-Accepted', { name: 'user'});
-    logEvent(analytics, 'Url-Changed', { name: 'user'});
-    navigate('./duplicate')
-  }
-  
-  const handlecookieRejection =()=>{
-    setCookies(null)
-    logEvent(analytics, 'Cookie-Rejected', { name: 'user'});
-    logEvent(analytics, 'Url-Changed', { name: 'user'});
-    navigate('./duplicate')
-  }
+
+const Duplicate = () => {
 
   
   const navigate = useNavigate();
@@ -123,17 +103,9 @@ const MainPage = () => {
           </Next>
         </PrevNext>
       </Footer>
-      {cookies==='yes'? <Alert severity="error" sx={{position:'absolute',marginTop:'37%',width:'100%'}}>
-        This site uses cookies. Learn more about how and why.
-        <Container sx ={{display:'flex',marginTop:'3%'}}>
-        <Button onClick={handlecookieAcceptance} sx={{backgroundColor:'red',width:'50%'}} variant="contained">ACCEPT ALL</Button>
-        <Button onClick={handlecookieRejection} sx={{marginLeft:'1%',backgroundColor:'red',width:'50%'}} variant="contained">REJECT ALL</Button>
-        </Container>
-      </Alert>:null}
-
     </Main>
     </>
   );
 };
 
-export default MainPage;
+export default Duplicate;

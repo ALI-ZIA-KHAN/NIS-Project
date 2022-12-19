@@ -4,6 +4,7 @@ import Login from "./Login";
 import MainPage from "./MainPage";
 import Signup from "./Signup";
 import NextPage from './NextPage'
+import Duplicate from "./Duplicate";
 
 const App=()=>{
 return(
@@ -11,6 +12,7 @@ return(
 <BrowserRouter>
 <Routes>
   <Route path="/" element={<MainPage/>}/>
+  <Route path="/duplicate" element={<Duplicate/>}/>
   <Route path="/signup" element={<Signup/>}/>
   <Route path="/login" element={<Login/>}/>
   <Route path="/loogin" element={<Login/>}/>

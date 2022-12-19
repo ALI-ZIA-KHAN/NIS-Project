@@ -19,27 +19,14 @@ import { logEvent } from "firebase/analytics";
 
 const NextPage = () => {
 
-const handlecookieAcceptance =()=>{
-  setCookies(null)
-  logEvent(analytics, 'Cookie-Accepted', { name: 'user'});
-}
-
-const handlecookieRejection =()=>{
-  setCookies(null)
-  logEvent(analytics, 'Cookie-Rejected', { name: 'user'});
-}
-
 const handlePopup = ()=>{
   setValue(null)
   logEvent(analytics, 'PopUp Clicked'); //, { name: 'user'})
 }
   const [value,setValue] = useState(null);
-  const [cookies,setCookies] = useState(null)
-  useEffect(()=>{
-    setTimeout(()=>{
-        setCookies('yes')
-    },4000)
+  // const [cookies,setCookies] = useState(null)
 
+useEffect(()=>{
     setTimeout(()=>{
         setValue('yes')
     },8000)
@@ -134,14 +121,6 @@ const handlePopup = ()=>{
             <br></br><br></br>
             <Button onClick={handlePopup} sx={{backgroundColor:'blue',width:'50%'}} variant="contained">Okay </Button>
           </Alert>:null}
-
-      {cookies==='yes'? <Alert severity="error" sx={{position:'absolute',marginTop:'37%',width:'100%'}}>
-        This site uses cookies. Learn more about how and why.
-        <Container sx ={{display:'flex',marginTop:'3%'}}>
-        <Button onClick={handlecookieAcceptance} sx={{backgroundColor:'red',width:'50%'}} variant="contained">ACCEPT ALL</Button>
-        <Button onClick={handlecookieRejection} sx={{marginLeft:'1%',backgroundColor:'red',width:'50%'}} variant="contained">REJECT ALL</Button>
-        </Container>
-      </Alert>:null}
     </Main>
     </>
   );
