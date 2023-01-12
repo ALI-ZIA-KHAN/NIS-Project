@@ -20,6 +20,7 @@ export default function Signup() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('')
+  const [val,setVal] = useState(false)
 
   // const analytics = getAnalytics(app);
   let auth = getAuth(app)
@@ -42,6 +43,9 @@ export default function Signup() {
         console.log("error", err)
       })
   }
+  const Premium =()=>{
+      setVal(true)
+}
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -68,10 +72,16 @@ export default function Signup() {
       <TextField sx={{ left: '40%', width: '20%' }} id="outlined-basic" label="Password" variant="outlined" type='password' onChange={(e) => setPassword(e.target.value)} autoComplete="off" /><br></br>
       <Typography sx={{ textAlign: 'center',fontSize:'11px', fontWeight: '80', marginLeft: '40%', marginRight: '40%' }} variant="p">*Should contain upper,lowercase,number and symbol</Typography><br></br><br></br>
       <Button sx={{ left: '40%', backgroundColor: 'red', width: '20%' }} variant="contained" onClick={handleSubmit} >SIGN IN</Button><br></br><br></br>
-
+      {val===true? <Alert severity="error" sx={{position:'absolute',marginTop:'37%',width:'100%'}}>
+        Do you want to continue with the same credentials or sign up with another account
+        <Container sx ={{display:'flex',marginTop:'3%'}}>
+        <Button onClick={handlecookieAcceptance} sx={{backgroundColor:'red',width:'50%'}} variant="contained">CONTINUE</Button>
+        <Button onClick={handlecookieRejection} sx={{marginLeft:'1%',backgroundColor:'red',width:'50%'}} variant="contained">SIGN UP</Button>
+        </Container>
+      </Alert>:null}
       <Typography sx={{ textAlign: 'center' }} variant="h6">OR</Typography><br></br>
 
-      <Button sx={{ backgroundColor: '#4267b2', left: '40%', width: '20%' }} variant="contained">Continue with Facebook</Button><br></br><br></br>
+      <Button sx={{ backgroundColor: '#4267b2', left: '40%', width: '20%' }} onClick={Premium} variant="contained">Subscribe with Premium</Button><br></br><br></br>
       <Button sx={{ backgroundColor: '#4285f4', left: '40%', width: '20%' }} variant="contained">Continue with Google</Button>
     </>
   )
