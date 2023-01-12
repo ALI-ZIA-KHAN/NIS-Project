@@ -13,6 +13,9 @@ import Button from '@mui/material/Button';
 import { app, analytics} from "../src/firebase"
 import { logEvent } from "firebase/analytics";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Container from '@mui/material/Container';
 
 
 
@@ -43,9 +46,6 @@ export default function Signup() {
         console.log("error", err)
       })
   }
-  const Premium =()=>{
-      setVal(true)
-}
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -66,23 +66,25 @@ export default function Signup() {
           </Toolbar>
         </AppBar>
       </Box>
-
+      {/* <Container sx ={{position:'absolute'}}> */}
       <Typography sx={{ textAlign: 'center', fontWeight: '600', marginTop: '4%' }} variant="h5">SIGNIN HERE</Typography><br></br>
-      <TextField sx={{ left: '40%', width: '20%' }} id="outlined-basic" label="Mobile number or email address" variant="outlined" type='text' onChange={(e) => setEmail(e.target.value)} autoComplete="off" /><br></br><br></br>
-      <TextField sx={{ left: '40%', width: '20%' }} id="outlined-basic" label="Password" variant="outlined" type='password' onChange={(e) => setPassword(e.target.value)} autoComplete="off" /><br></br>
+      <TextField sx={{ left: '40%', width: '20%' }} className="t1" id="outlined-basic" label="Mobile number or email address" variant="outlined" type='text' onChange={(e) => setEmail(e.target.value)} autoComplete="off" /><br></br><br></br>
+      <TextField sx={{ left: '40%', width: '20%' }} className="t2" id="outlined-basic-1" label="Password" variant="outlined" type='password' onChange={(e) => setPassword(e.target.value)} autoComplete="off" /><br></br>
       <Typography sx={{ textAlign: 'center',fontSize:'11px', fontWeight: '80', marginLeft: '40%', marginRight: '40%' }} variant="p">*Should contain upper,lowercase,number and symbol</Typography><br></br><br></br>
       <Button sx={{ left: '40%', backgroundColor: 'red', width: '20%' }} variant="contained" onClick={handleSubmit} >SIGN IN</Button><br></br><br></br>
-      {/* {val===true? <Alert severity="error" sx={{position:'absolute',marginTop:'37%',width:'100%'}}>
+      {val===true? <Alert severity="error" sx={{position:'absolute',marginTop:'37%',width:'100%'}}>
         Do you want to continue with the same credentials or sign up with another account
         <Container sx ={{display:'flex',marginTop:'3%'}}>
         <Button onClick={handlecookieAcceptance} sx={{backgroundColor:'red',width:'50%'}} variant="contained">CONTINUE</Button>
         <Button onClick={handlecookieRejection} sx={{marginLeft:'1%',backgroundColor:'red',width:'50%'}} variant="contained">SIGN UP</Button>
         </Container>
-      </Alert>:null} */}
+      </Alert>:null}
       <Typography sx={{ textAlign: 'center' }} variant="h6">OR</Typography><br></br>
 
-      <Button sx={{ backgroundColor: '#4267b2', left: '40%', width: '20%' }} onClick={Premium} variant="contained">Subscribe with Premium</Button><br></br><br></br>
+      <Button sx={{ backgroundColor: '#4267b2', left: '40%', width: '20%' }} onClick={()=>setVal(true)} variant="contained">Subscribe with Premium</Button><br></br><br></br>
       <Button sx={{ backgroundColor: '#4285f4', left: '40%', width: '20%' }} variant="contained">Continue with Google</Button>
+      
+      {/* </Container> */}
     </>
   )
 
