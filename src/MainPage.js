@@ -69,10 +69,7 @@ const MainPage = () => {
             Its finger <br /> Lickin <Span> Good </Span>
           </H2>
           <P>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet
-            ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore
-            doloribus! orem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae
-            natus eveniet ratione temporibus aperiam harum alias!
+          KFC was one of the first American fast-food chains to expand internationally, opening outlets in Canada, the United Kingdom, Mexico and Jamaica by the mid-1960s. Throughout the 1970s and 1980s, it experienced mixed fortunes domestically, as it went through a series of changes in corporate ownership with little or no experience in the restaurant business. In the early 1970s, KFC was sold to the spirits distributor Heublein
           </P>
           <Button sx={{marginRight:'2%'}} variant="contained" color="inherit" onClick={()=> navigate('/signup')}>Signup</Button>
         <Button variant="contained" color="inherit" onClick={()=> navigate('/login')}>Login</Button>

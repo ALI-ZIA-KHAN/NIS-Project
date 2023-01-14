@@ -23,7 +23,7 @@ export default function Login() {
   //   signInWithEmailAndPassword(auth, email, password)
   // .then((userCredential) => { 
     // const user = userCredential.user;
-    navigate("/nextpage");
+    navigate('/premium')
     // ...
   // })
   // .catch((error) => {

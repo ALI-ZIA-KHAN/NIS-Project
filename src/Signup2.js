@@ -20,7 +20,7 @@ import Container from '@mui/material/Container';
 
 
 
-export default function Signup() {
+export default function Signup2() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('')
@@ -34,7 +34,7 @@ export default function Signup() {
 
     // createUserWithEmailAndPassword(auth, email, password)
     //   .then((res) => {
-        navigate("/login");
+        navigate("/login2");
       //   if (validator.isStrongPassword(password, {
       //     minLength: 8, minLowercase: 1,
       //     minUppercase: 1, minNumbers: 1, minSymbols: 1
@@ -94,5 +94,3 @@ export default function Signup() {
   )
 
 }
-
-

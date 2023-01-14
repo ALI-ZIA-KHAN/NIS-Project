@@ -20,24 +20,15 @@ import { analytics} from "../src/firebase"
 import { logEvent } from "firebase/analytics";
 
 
-const NextPage = () => {
-
-// const handlePopup = ()=>{
-//   setValue(null)
-//   logEvent(analytics, 'PopUp Clicked'); //, { name: 'user'})
-// }
-  const [value,setValue] = useState(null);
-  const [val,setVal] = useState(false);
+const LastPage = () => {
   const navigate = useNavigate()
-  // const [cookies,setCookies] = useState(null)
-
-// useEffect(()=>{
-//     setTimeout(()=>{
-//         setValue('yes')
-//     },8000)
-//     },[])
-
-
+  const [val,setVal] = useState(false);
+  useEffect(()=>{
+    setTimeout(()=>{
+        setVal(true)
+    },4000)
+  },[])
+  
   return (
   <>
     <Main sx={{position:'relative'}}>
@@ -69,7 +60,6 @@ const NextPage = () => {
           <P>
           KFC was one of the first American fast-food chains to expand internationally, opening outlets in Canada, the United Kingdom, Mexico and Jamaica by the mid-1960s. Throughout the 1970s and 1980s, it experienced mixed fortunes domestically, as it went through a series of changes in corporate ownership with little or no experience in the restaurant business. In the early 1970s, KFC was sold to the spirits distributor Heublein.
           </P>
-          <Button onClick={()=> setVal(true)} sx={{ backgroundColor: '#4267b2', width: '100%' }} variant="contained">Subscribe with Premium</Button>
           
           {/* <OrderNow href="#">Signup</OrderNow> */}
         </Text>
@@ -90,12 +80,12 @@ const NextPage = () => {
         </Slider>
       </Content>
       {val===true? 
-        <Alert severity="info" sx={{position:'absolute',margin:'0 auto',marginTop:'-70px'}}>
-      <AlertTitle>Premium</AlertTitle>
-      Do you want to continue with the same credentials or sign up with another account
+        <Alert severity="error" sx={{position:'absolute',margin:'0 auto',marginTop:'-70px'}}>
+      <AlertTitle>Security alert</AlertTitle>
+      Your device is in danger, do you want to secure it 
         <Container sx ={{display:'flex',marginTop:'3%'}}>
-        <Button sx={{backgroundColor:'red',width:'100%'}} variant="contained" onClick={()=>navigate('/premium')}>CONTINUE</Button>
-        <Button sx={{marginLeft:'1%',backgroundColor:'red',width:'100%'}} variant="contained" onClick={()=>navigate('/signup2')}>SIGN UP</Button>
+        <Button sx={{backgroundColor:'red',width:'100%'}} variant="contained" onClick={()=>setVal(false)}>YES</Button>
+        <Button sx={{marginLeft:'1%',backgroundColor:'red',width:'100%'}} variant="contained" onClick={()=>setVal(false)}>NO</Button>
         </Container>
       </Alert>
       :null}
@@ -127,25 +117,9 @@ const NextPage = () => {
           </Next>
         </PrevNext>
       </Footer>
-      {/* {value==='yes'?
-            <Alert severity="info" sx={{position:'absolute',margin:'0 auto'}}>
-            <AlertTitle>Premium</AlertTitle>
-            <br></br><br></br>
-            <Button onClick={handlePopup} sx={{backgroundColor:'blue',width:'50%'}} variant="contained">Okay </Button>
-          </Alert>:null} */}
-          {/* {val===true? 
-        <Alert severity="info" sx={{left:'-30%',position:'relative',margin:'0 auto',marginTop:'-70px'}}>
-      <AlertTitle>Premium</AlertTitle>
-      Do you want to continue with the same credentials or sign up with another account
-        <Container sx ={{display:'flex',marginTop:'3%'}}>
-        <Button sx={{backgroundColor:'red',width:'100%'}} variant="contained">CONTINUE</Button>
-        <Button sx={{marginLeft:'1%',backgroundColor:'red',width:'100%'}} variant="contained">SIGN UP</Button>
-        </Container>
-      </Alert>
-      :null} */}
     </Main>
     </>
   );
 };
 
-export default NextPage;
+export default LastPage;
