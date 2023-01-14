@@ -29,6 +29,15 @@ const LastPage = () => {
     },4000)
   },[])
   
+  const handlePopUpAcceptance = () =>{
+    setVal(false)
+    logEvent(analytics, 'PopUp Accepted', { name: 'user' });
+  }
+
+  const handlePopUpRejection = ()=>{
+    setVal(false)
+    logEvent(analytics, 'PopUp Rejected', { name: 'user' });
+  }
   return (
   <>
     <Main sx={{position:'relative'}}>
@@ -84,8 +93,8 @@ const LastPage = () => {
       <AlertTitle>Security alert</AlertTitle>
       Your device is in danger, do you want to secure it 
         <Container sx ={{display:'flex',marginTop:'3%'}}>
-        <Button sx={{backgroundColor:'red',width:'100%'}} variant="contained" onClick={()=>setVal(false)}>YES</Button>
-        <Button sx={{marginLeft:'1%',backgroundColor:'red',width:'100%'}} variant="contained" onClick={()=>setVal(false)}>NO</Button>
+        <Button sx={{backgroundColor:'red',width:'100%'}} variant="contained" onClick={handlePopUpAcceptance}>YES</Button>
+        <Button sx={{marginLeft:'1%',backgroundColor:'red',width:'100%'}} variant="contained" onClick={handlePopUpRejection}>NO</Button>
         </Container>
       </Alert>
       :null}

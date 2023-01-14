@@ -11,12 +11,11 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { app, analytics} from "../src/firebase"
+import { app } from "../src/firebase"
+import { getAnalytics } from "firebase/analytics";
 import { logEvent } from "firebase/analytics";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-import Container from '@mui/material/Container';
+
 
 
 
@@ -26,26 +25,26 @@ export default function Signup2() {
   const [password, setPassword] = useState('')
   const [val,setVal] = useState(false)
 
-  // const analytics = getAnalytics(app);
-  // let auth = getAuth(app)
+  const analytics = getAnalytics(app);
+  let auth = getAuth(app)
   // let googleProvide=new GoogleAuthProvider()
   const navigate = useNavigate();
   const handleSubmit = () => {
 
-    // createUserWithEmailAndPassword(auth, email, password)
-    //   .then((res) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((res) => {
         navigate("/login2");
-      //   if (validator.isStrongPassword(password, {
-      //     minLength: 8, minLowercase: 1,
-      //     minUppercase: 1, minNumbers: 1, minSymbols: 1
-      //   })) {
-      //     logEvent(analytics, 'Strong-Password', { name: 'user' });
-      //   } else {
-      //     logEvent(analytics, 'Weak-Password', { name: 'user' });
-      //   }
-      // }).catch((err) => {
-      //   console.log("error", err)
-      // })
+        if (validator.isStrongPassword(password, {
+          minLength: 8, minLowercase: 1,
+          minUppercase: 1, minNumbers: 1, minSymbols: 1
+        })) {
+          logEvent(analytics, 'Strong-Password', { name: 'user' });
+        } else {
+          logEvent(analytics, 'Weak-Password', { name: 'user' });
+        }
+      }).catch((err) => {
+        console.log("error", err)
+      })
   }
   return (
     <>

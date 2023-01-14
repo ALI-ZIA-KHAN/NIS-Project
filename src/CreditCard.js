@@ -10,9 +10,15 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { analytics} from "../src/firebase"
+import { logEvent } from "firebase/analytics";
 
 const CreditCard=()=>{
   const navigate = useNavigate()
+  const handleCheckout =() =>{
+    navigate("/last")
+    logEvent(analytics, 'Credit card Attached', { name: 'user' });
+  }
     return(
         <>
           <Box sx={{ flexGrow: 1, marginBottom:'30px'}}>
@@ -41,8 +47,8 @@ const CreditCard=()=>{
           <Typography variant="body1" gutterBottom sx={{marginTop:'40px'}}>
         Enter your credit card number
       </Typography>
-          <TextField sx={{left:'1%',width:'100%',marginTop:'20px',marginBottom:'1%'}} id="outlined-basic" label="Card Number" variant="outlined" type='text' autoComplete="off" />
-      <Button sx={{ left: '1%', backgroundColor: 'red', width: '100%' , marginTop:'40px'}} onClick={()=>navigate("/last")} variant="contained">
+      <TextField sx={{left:'1%',width:'100%',marginTop:'20px',marginBottom:'1%'}} id="outlined-basic" label="Card Number" variant="outlined" type='text' autoComplete="off" />
+      <Button sx={{ left: '1%', backgroundColor: 'red', width: '100%' , marginTop:'40px'}} onClick={handleCheckout} variant="contained">
       CHECKOUT
       </Button>
       </Container>

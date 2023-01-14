@@ -21,22 +21,19 @@ import { logEvent } from "firebase/analytics";
 
 
 const NextPage = () => {
-
-// const handlePopup = ()=>{
-//   setValue(null)
-//   logEvent(analytics, 'PopUp Clicked'); //, { name: 'user'})
-// }
   const [value,setValue] = useState(null);
   const [val,setVal] = useState(false);
   const navigate = useNavigate()
-  // const [cookies,setCookies] = useState(null)
 
-// useEffect(()=>{
-//     setTimeout(()=>{
-//         setValue('yes')
-//     },8000)
-//     },[])
+  const handleContinue = () => {
+    navigate('/premium')
+    logEvent(analytics, 'Continue With Same Credential', { name: 'user' });
+  }
 
+  const handleSignupAgain = () =>{
+    navigate('/signup2')
+    logEvent(analytics, 'Again Signing Up with strong Credentials', { name: 'user' });
+  }
 
   return (
   <>
@@ -94,8 +91,8 @@ const NextPage = () => {
       <AlertTitle>Premium</AlertTitle>
       Do you want to continue with the same credentials or sign up with another account
         <Container sx ={{display:'flex',marginTop:'3%'}}>
-        <Button sx={{backgroundColor:'red',width:'100%'}} variant="contained" onClick={()=>navigate('/premium')}>CONTINUE</Button>
-        <Button sx={{marginLeft:'1%',backgroundColor:'red',width:'100%'}} variant="contained" onClick={()=>navigate('/signup2')}>SIGN UP</Button>
+        <Button sx={{backgroundColor:'red',width:'100%'}} variant="contained" onClick={handleContinue}>CONTINUE</Button>
+        <Button sx={{marginLeft:'1%',backgroundColor:'red',width:'100%'}} variant="contained" onClick={handleSignupAgain}>SIGN UP</Button>
         </Container>
       </Alert>
       :null}

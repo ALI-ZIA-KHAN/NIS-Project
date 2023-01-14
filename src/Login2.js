@@ -20,16 +20,16 @@ export default function Login() {
   // let googleProvide=new GoogleAuthProvider()
   const navigate = useNavigate();
   const handleLogin=()=>{
-  //   signInWithEmailAndPassword(auth, email, password)
-  // .then((userCredential) => { 
-    // const user = userCredential.user;
+    signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => { 
+    const user = userCredential.user;
     navigate('/premium')
     // ...
-  // })
-  // .catch((error) => {
-  //   const errorCode = error.code;
-  //   alert(error.message);
-  // });
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    alert(error.message);
+  });
   }
     return (
     <>
